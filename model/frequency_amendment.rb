@@ -4,4 +4,6 @@ class FrequencyAmendment < Amendment
   def initialize(frequency)
     @frequency = frequency
   end
+
+  def apply(contract); end
 end

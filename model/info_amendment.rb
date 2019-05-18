@@ -4,4 +4,6 @@ class InfoAmendment < Amendment
   def initialize(info)
     @info = info
   end
+
+  def apply(contract); end
 end

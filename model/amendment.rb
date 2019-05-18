@@ -1,5 +1,7 @@
 class Amendment
   attr_accessor
 
-  def apply(contract); end
+  def apply(_contract)
+    raise 'You must implement'
+  end
 end
