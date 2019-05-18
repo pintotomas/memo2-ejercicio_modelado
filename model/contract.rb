@@ -12,4 +12,8 @@ class Contract
   def latest; end
 
   def version(number); end
+
+  def add_amendments(amendment)
+    @amendments.push(amendment)
+  end
 end

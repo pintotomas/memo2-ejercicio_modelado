@@ -1,5 +1,9 @@
 require 'rspec'
 require_relative '../model/contract'
+require_relative '../model/amendment'
+require_relative '../model/info_amendment'
+require_relative '../model/frequency_amendment'
+require_relative '../model/mont_amendment'
 
 describe Contract do
   describe 'contract' do
@@ -27,6 +31,14 @@ describe Contract do
       info = 'this is the contract with WB'
       contract = described_class.new(info: info)
       expect(contract.info).to eq(info)
+    end
+
+    it 'I should add an mont amendment' do
+      info = 'this is the contract with WB'
+      contract = described_class.new(info: info)
+      mont_amendment = MontAmendment.new(100)
+      contract.add_amendments(mont_amendment)
+      expect(contract.amendments.length).to eq(1)
     end
 
     # it 'get version' do
