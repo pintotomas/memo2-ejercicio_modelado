@@ -1,7 +1,5 @@
 class Amendment
+  attr_accessor
 
-  attr_accessor 
-
-  def apply(contract)
-  end
+  def apply(contract); end
 end
