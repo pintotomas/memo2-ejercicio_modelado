@@ -16,10 +16,6 @@ class Contract
     @confirmed = false
   end
 
-  def check_if_can_change_property
-    raise UpdateContractError if @confirmed
-  end
-
   def change_signature_date(signature_date)
     check_if_can_change_property
     @signature_date = signature_date
@@ -49,5 +45,11 @@ class Contract
 
   def add_amendment(amendment)
     @amendments << amendment
+  end
+
+  protected
+
+  def check_if_can_change_property
+    raise UpdateContractError if @confirmed
   end
 end
