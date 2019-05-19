@@ -44,4 +44,10 @@ describe Contract do
     contract.add_amendment(mont_amendment)
     expect(contract.amendments.size).to eq(1)
   end
+
+  it 'content is added ok' do
+    contract = described_class.new(contents: ['Volver al futuro'])
+    contract.add_content('Volver al futuro II')
+    expect(contract.contents.size).to eq(2)
+  end
 end
