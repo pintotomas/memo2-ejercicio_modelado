@@ -3,7 +3,7 @@ require_relative '../model/license'
 require_relative '../model/contract'
 
 describe License do
-  let(:contract) { Contract.new }
+  let(:contract) { Contract.new(contents: ['back to the future']) }
   let(:license) { described_class.new(2, 200, ['volver']) }
 
   it 'should have properties set' do # rubocop:disable RSpec/MultipleExpectations

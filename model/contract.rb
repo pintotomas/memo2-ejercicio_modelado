@@ -1,12 +1,16 @@
 class Contract
   attr_reader :license, :amendments
   attr_accessor :signature_date, :client, :mont, :contents, :confirmed
+  MINIMUM_CONTRATCT_CONTENTS_CONST = 1
 
   def initialize(data = {})
     @signature_date = data[:signature_date]
     @client = data[:client]
     @mont = data[:mont]
     @contents = data[:contents]
+    raise ContractMustHaveContentError unless
+    !@contents.nil? && @contents.size >= MINIMUM_CONTRATCT_CONTENTS_CONST
+
     @license = data[:license]
     @amendments = []
     @confirmed = false
@@ -38,6 +42,8 @@ class Contract
 
   def remove_content(content)
     check_if_can_change_property
+    raise ContractMustHaveContentError unless @contents.length > MINIMUM_CONTRATCT_CONTENTS_CONST
+
     @contents.delete(content)
   end
 
