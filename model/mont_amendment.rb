@@ -5,5 +5,7 @@ class MontAmendment < Amendment
     @mont = mont
   end
 
-  def apply(contract); end
+  def apply(contract)
+    contract.mont = @mont
+  end
 end

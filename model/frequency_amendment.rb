@@ -5,5 +5,7 @@ class FrequencyAmendment < Amendment
     @frequency = frequency
   end
 
-  def apply(contract); end
+  def apply(contract)
+    contract.license.repetition_frequency = @frequency
+  end
 end
