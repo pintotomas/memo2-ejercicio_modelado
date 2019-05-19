@@ -48,6 +48,8 @@ class Contract
   end
 
   def add_amendment(amendment)
+    raise CantAddAmendments unless @confirmed
+
     @amendments << amendment
   end
 

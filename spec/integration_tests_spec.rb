@@ -25,4 +25,9 @@ describe 'Integration tests' do
 
     expect { contract.change_mont(200_000) }.to raise_error(UpdateContractError)
   end
+  #  it 'Cant amend a contract without confirmation' do
+  #    license = License.new(1, 1, %w[volver canal13])
+  #    contract = Contract.new(client: 'artear', contents: ['Volver al futuro'],
+  #                            mont: 10_000, license: license)
+  #  end
 end

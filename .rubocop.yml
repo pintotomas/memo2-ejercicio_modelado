@@ -28,3 +28,5 @@ RSpec/MultipleExpectations:
   Max: 3
 EndOfLine:
   Enabled: false
+RSpec/ExampleLength:
+  Max: 8

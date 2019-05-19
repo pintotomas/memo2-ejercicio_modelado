@@ -18,6 +18,7 @@ describe ContractDecorator do
 
   it 'returns original if version is 0' do
     mont_amendment = MontAmendment.new(100)
+    initial_contract.confirm
     initial_contract.add_amendment(mont_amendment)
     contract_version = contract_decorator.get_contract_version(initial_contract, 0)
     expect(contract_version.mont).to eq(5000)
@@ -25,6 +26,7 @@ describe ContractDecorator do
 
   it 'applies mont amendment' do
     mont_amendment = MontAmendment.new(100)
+    initial_contract.confirm
     initial_contract.add_amendment(mont_amendment)
     contract_version = contract_decorator.get_contract_version(initial_contract, 1)
     expect(contract_version.mont).to eq(100)
@@ -32,12 +34,14 @@ describe ContractDecorator do
 
   it 'applies frequency amendment' do
     freq_amendment = FrequencyAmendment.new(4)
+    initial_contract.confirm
     initial_contract.add_amendment(freq_amendment)
     contract_version = contract_decorator.get_contract_version(initial_contract, 1)
     expect(contract_version.license.repetition_frequency).to eq(4)
   end
 
   it 'applies only first amendment if version is 1' do
+    initial_contract.confirm
     initial_contract.add_amendment(FrequencyAmendment.new(4))
     initial_contract.add_amendment(MontAmendment.new(100))
     contract_version = contract_decorator.get_contract_version(initial_contract, 1)
