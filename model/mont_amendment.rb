@@ -1,8 +1,8 @@
 class MontAmendment < Amendment
-  attr_accessor :frequency
+  attr_accessor :mont
 
-  def initialize(frequency)
-    @frequency = frequency
+  def initialize(mont)
+    @mont = mont
   end
 
   def apply(contract); end
