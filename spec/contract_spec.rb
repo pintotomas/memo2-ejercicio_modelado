@@ -10,7 +10,7 @@ describe Contract do
     it { is_expected.to respond_to(:signature_date) }
     it { is_expected.to respond_to(:client) }
     it { is_expected.to respond_to(:mont) }
-    it { is_expected.to respond_to(:content) }
+    it { is_expected.to respond_to(:contents) }
     it { is_expected.to respond_to(:license) }
     it { is_expected.to respond_to(:amendments) }
     it { is_expected.to respond_to(:confirmed) }
@@ -20,11 +20,11 @@ describe Contract do
     date = Date.new
     license = License.new(2, 200, ['volver'])
     contract = described_class.new(signature_date: date, client: 'artear', mont: 5000,
-                                   content: 'Volver al futuro', license: license)
+                                   contents: ['Volver al futuro'], license: license)
     expect(contract.signature_date).to eq(date)
     expect(contract.client).to eq('artear')
     expect(contract.mont).to eq(5000)
-    expect(contract.content).to eq('Volver al futuro')
+    expect(contract.contents).to eq(['Volver al futuro'])
     expect(contract.license).to eq(license)
     expect(contract.amendments).to eq([])
     expect(contract.confirmed).to eq(false)

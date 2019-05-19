@@ -1,12 +1,12 @@
 class Contract
   attr_reader :license, :amendments
-  attr_accessor :signature_date, :client, :mont, :content, :confirmed
+  attr_accessor :signature_date, :client, :mont, :contents, :confirmed
 
   def initialize(data = {})
     @signature_date = data[:signature_date]
     @client = data[:client]
     @mont = data[:mont]
-    @content = data[:content]
+    @contents = data[:contents]
     @license = data[:license]
     @amendments = []
     @confirmed = false
@@ -25,7 +25,7 @@ class Contract
     @amendments << amendment
   end
 
-  def add_content(amendment)
-    @amendments << amendment
+  def add_content(content)
+    @contents << content
   end
 end
