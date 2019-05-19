@@ -21,6 +21,10 @@ class Contract
     @signature_date = signature_date
   end
 
+  def confirm
+    @confirmed = true
+  end
+
   def change_client(client)
     check_if_can_change_property
     @client = client

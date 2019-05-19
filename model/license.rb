@@ -23,6 +23,10 @@ class License
     @signals.delete(signal_name)
   end
 
+  def confirm
+    @confirmed = true
+  end
+
   def change_amount_of_repetitions(amount_of_repetitions)
     check_if_can_change_property
     @amount_of_repetitions = amount_of_repetitions

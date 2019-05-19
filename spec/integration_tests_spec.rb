@@ -17,4 +17,12 @@ describe 'Integration tests' do
     contract.change_mont(200_000)
     expect(contract.mont).to eq 200_000
   end
+  it 'Cant modify a contract after confirmation' do
+    license = License.new(1, 1, %w[volver canal13])
+    contract = Contract.new(client: 'artear', contents: ['Volver al futuro'],
+                            mont: 10_000, license: license)
+    contract.confirm
+
+    expect { contract.change_mont(200_000) }.to raise_error(UpdateContractError)
+  end
 end
