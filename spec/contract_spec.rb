@@ -50,4 +50,10 @@ describe Contract do
     contract.add_content('Volver al futuro II')
     expect(contract.contents.size).to eq(2)
   end
+
+  it 'content is removed ok' do
+    contract = described_class.new(contents: ['Volver al futuro'])
+    contract.remove_content('Volver al futuro')
+    expect(contract.contents.size).to eq(0)
+  end
 end

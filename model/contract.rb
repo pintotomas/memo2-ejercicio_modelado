@@ -28,4 +28,8 @@ class Contract
   def add_content(content)
     @contents << content
   end
+
+  def remove_content(content)
+    @contents.delete(content)
+  end
 end
