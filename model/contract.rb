@@ -1,32 +1,31 @@
 class Contract
-  attr_reader :info, :frequency, :mont, :content
-
-  attr_accessor :amendments, :confirmed
+  attr_reader :license, :amendments
+  attr_accessor :signature_date, :client, :mont, :content, :confirmed
 
   def initialize(data = {})
-    @info = data[:info]
-    @frequency = data[:frequency]
+    @signature_date = data[:signature_date]
+    @client = data[:client]
     @mont = data[:mont]
     @content = data[:content]
+    @license = data[:license]
     @amendments = []
     @confirmed = false
   end
 
-  def latest; end
-
-  def change_info(info)
+  def check_if_can_change_property
     raise UpdateContractError if @confirmed
-
-    @info = info
   end
 
-  def change_frequency(frequency); end
+  def change_mont(mont)
+    check_if_can_change_property
+    @mont = mont
+  end
 
-  def change_mont(mont); end
+  def add_amendment(amendment)
+    @amendments << amendment
+  end
 
-  def version(number); end
-
-  def add_amendments(amendment)
-    @amendments.push(amendment)
+  def add_content(amendment)
+    @amendments << amendment
   end
 end
