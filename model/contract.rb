@@ -16,20 +16,32 @@ class Contract
     raise UpdateContractError if @confirmed
   end
 
+  def change_signature_date(signature_date)
+    check_if_can_change_property
+    @signature_date = signature_date
+  end
+
+  def change_client(client)
+    check_if_can_change_property
+    @client = client
+  end
+
   def change_mont(mont)
     check_if_can_change_property
     @mont = mont
   end
 
-  def add_amendment(amendment)
-    @amendments << amendment
-  end
-
   def add_content(content)
+    check_if_can_change_property
     @contents << content
   end
 
   def remove_content(content)
+    check_if_can_change_property
     @contents.delete(content)
+  end
+
+  def add_amendment(amendment)
+    @amendments << amendment
   end
 end

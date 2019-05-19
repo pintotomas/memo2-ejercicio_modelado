@@ -31,10 +31,29 @@ describe Contract do
   end
 
   describe 'change confirmated contract' do
-    it 'confirmed contract should not be able to be changed' do
+    it 'confirmed contract should not be able to be change mont' do
       contract = described_class.new(mont: 2000)
       contract.confirmed = true
       expect { contract.change_mont(1000) }.to raise_error(UpdateContractError)
+    end
+
+    it 'confirmed contract should not be able to be change signature_date' do
+      contract = described_class.new(signature_date: Date.new)
+      contract.confirmed = true
+      expect { contract.change_signature_date(Date.new) }.to raise_error(UpdateContractError)
+    end
+
+    it 'confirmed contract should not be able to be change client' do
+      contract = described_class.new(client: 2000)
+      contract.confirmed = true
+      expect { contract.change_client('pepsi') }.to raise_error(UpdateContractError)
+    end
+
+    it 'confirmed contract should not be able to be change content' do
+      contract = described_class.new(content: ['Volver al futuro'])
+      contract.confirmed = true
+      expect { contract.add_content('Volver al futuro II') }.to raise_error(UpdateContractError)
+      expect { contract.remove_content('Volver al futuro') }.to raise_error(UpdateContractError)
     end
   end
 
