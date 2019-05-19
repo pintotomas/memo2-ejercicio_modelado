@@ -9,4 +9,10 @@ RuboCop::RakeTask.new(:rubocop) do |task|
   task.requires << 'rubocop-rspec'
 end
 
-task default: %i[spec rubocop]
+require 'cucumber'
+require 'cucumber/rake/task'
+Cucumber::Rake::Task.new(:cucumber) do |t|
+  t.profile = 'cucumber_profile'
+end
+
+task default: %i[spec rubocop cucumber]
